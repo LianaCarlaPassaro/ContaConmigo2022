@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'donantes',
     'pacientes',
     'reposicionesAsignadas',
-    'tipoDocumentos'
+    'tipoDocumentos',
+    'sexo',
 ]
 
 MIDDLEWARE = [

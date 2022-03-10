@@ -35,12 +35,13 @@
             <thead>
             <tr>
                 <th>Nombre y Apellido</th>
-                <th>Tipo Sangre</th>
+                <th>Sexo</th>
                 <th>Fecha Nacimiento</th>
-                <th>Domicilio</th>
-                <th>Ciudad</th>
+                <th>Tipo Sangre</th>
                 <th>Mail</th>
                 <th>Fecha Ultima Extracción</th>
+                <th>Domicilio</th>
+                <th>Ciudad</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -48,12 +49,13 @@
             {% for doninsc in listado_don_inscr %}
             <tr>
                 <td>{{doninsc.nombre}} {{doninsc.apellido}}</td>
-                <td>{{doninsc.tipoSangre_id}}</td>
+                <td>{{doninsc.sexo}}</td>
                 <td>{{doninsc.fechaNacimiento}}</td>
-                <td>{{doninsc.domicilio}}</td>
-                <td>{{doninsc.ciudad_id}}</td>
+                <td>{{doninsc.tipoSangre_id}}</td>
                 <td>{{doninsc.mail}}</td>
                 <td>{{doninsc.fechaUltimaExtraccion}}</td>
+                <td>{{doninsc.domicilio}}</td>
+                <td>{{doninsc.ciudad_id}}</td>
 
                 <td><a href="detalleDonanteInscripto/{{doninsc.id}}">Ver</a> <a href="editarDonanteInscripto/{{doninsc.id}}">Editar</a> <a href="eliminarDonanteInscripto/{{doninsc.id}}">Eliminar</a></td>
 

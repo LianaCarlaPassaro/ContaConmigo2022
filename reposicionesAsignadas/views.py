@@ -37,3 +37,9 @@ def editarDonanteAsignado(request, id):
         formaDonanteReposicionAsignada = DonanteReposicionAsignadaForm(instance=donanteReposicionAsignada)
 
     return render(request, 'reposicionesAsignadas/editar.html', {'formaDonanteReposicionAsignada': formaDonanteReposicionAsignada})
+
+def eliminarDonanteAsignado(request, id):
+    donanteAsignado = get_object_or_404(ReposicionesAsignadas, pk=id)
+    if donanteAsignado:
+        donanteAsignado.delete()
+    return redirect('listadoDonantes')

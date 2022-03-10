@@ -4,6 +4,7 @@ from django.db import models
 
 from ciudades.models import Ciudad
 from gruposFactor.models import GrupoFactor
+from sexo.models import Sexo
 from tipoDocumentos.models import TipoDocumento
 
 
@@ -11,7 +12,7 @@ class Donantes(models.Model):
     nombre = models.CharField(max_length=255)
     apellido = models.CharField(max_length=255)
     fechaNacimiento = models.DateField()
-    sexo = models.CharField(max_length=255)
+    sexo = models.ForeignKey(Sexo, on_delete=models.SET_NULL, null=True)
     tipoDNI = models.ForeignKey(TipoDocumento,on_delete=models.SET_NULL, null=True)
     dni = models.CharField(max_length=255)
     domicilio = models.CharField(max_length=255)

@@ -21,7 +21,7 @@ from pacientes.views import detalleDonanteReposicion, nuevoDonanteReposicion, ed
 from donantes.views import listadoDonantes, detalleDonanteInscripto, editarDonanteInscripto, nuevoDonanteAInscribir, \
     eliminarDonanteInscripto
 from reposicionesAsignadas.views import listadoPacienteAsignado, nuevoDonanteAsignar, detalleDonanteAsignado, \
-    editarDonanteAsignado
+    editarDonanteAsignado, eliminarDonanteAsignado
 from webapp.views import bienvenido
 
 urlpatterns = [
@@ -41,5 +41,7 @@ urlpatterns = [
     path('nuevoDonanteAsignar', nuevoDonanteAsignar),
     path('detalleDonanteAsignado/<int:id>', detalleDonanteAsignado),
     path('editarDonanteAsignado/<int:id>', editarDonanteAsignado),
+    path('eliminarDonanteAsignado/<int:id>', eliminarDonanteAsignado),
+
 
 ]
