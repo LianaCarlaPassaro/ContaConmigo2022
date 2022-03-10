@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/css/estilos.css" rel="stylesheet"/>
+    <title>Detalle Donantes para Reposición</title>
+</head>
+
+<body>
+<header>
+    <!--<img src="imagenes/images.jfif" alt='Logo ContáConmigo' width="80px" title="Logo ContáConmigo" />-->
+    <h1>ContáConmigo</h1>
+</header>
+<nav>
+    <a href="listadoDonanteReposicion">Listado Pacientes</a>
+    <a href="listadoDonantes">listado Donantes Inscriptos</a>
+    <a href="listadoPacienteAsignado">Aplicar Voluntariamente a Paciente</a>
+</nav>
+<section>
+    <h3>Detalle Donante Inscripto:</h3>
+    <table>
+        <div>Nombre: {{detalle_don_insc.nombre}}</div>
+        <div>Apellido: {{detalle_don_insc.apellido}}</div>
+        <div>Documento: {{detalle_don_rep.tipoDNI}} {{detalle_don_rep.dni}}</div>
+        <div>Tipo Sangre: {{detalle_don_insc.tipoSangre_id}}</div>
+        <div>Fecha Ultima Extracción: {{detalle_don_insc.fechaUltimaExtraccion}}</div>
+        <div>Domicilio: {{detalle_don_insc.domicilio}}</div>
+        <div>Ciudad: {{detalle_don_insc.ciudad_id}}</div>
+        <div>Fecha Nacimiento: {{detalle_don_insc.fechaNacimiento}}</div>
+        <div>Mail: {{detalle_don_insc.mail}}</div>
+    </table>
+</section>
+
+<a href="{% url 'listadoDonantes' %}">Volver</a>
+<footer>
+    <h2>
+        <a href="https://www.facebook.com/lis.cpas">Liana Carla Passaro</a>
+    </h2>
+</footer>
+
+</body>
+
+</html>

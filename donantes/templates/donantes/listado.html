@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/css/estilos.css" rel="stylesheet"/>
+    <title>UTN - Universidad Tecnologica Nacional Facultad Regional Rosario</title>
+</head>
+
+<body>
+<header>
+    <!--<img src="imagenes/images.jfif" alt='Logo ContáConmigo' width="80px" title="Logo ContáConmigo" />
+    <img src="webapp/imagenes/topologo.png" alt='Logo UTN' width="80px" title="Logo UTN" />
+    -->
+    <h2>ContáConmigo</h2>
+    <h5>Página creada para conectar a aquellos que solicitan donantes de sangre con aquellos dispuestos a donar</h5>
+</header>
+<nav>
+    <a href="listadoDonanteReposicion">Listado Pacientes</a>
+    <a href="listadoDonantes">Listado de Donantes Inscriptos</a>
+    <a href="listadoPacienteAsignado">Aplicar Voluntariamente a Paciente</a>
+</nav>
+<section>
+    <br/>
+    <div>
+        Listado Donantes Inscriptos:
+    </div>
+    <br/>
+    <br/>
+
+    <div>
+        <table border="2">
+            <thead>
+            <tr>
+                <th>Nombre y Apellido</th>
+                <th>Tipo Sangre</th>
+                <th>Fecha Nacimiento</th>
+                <th>Domicilio</th>
+                <th>Ciudad</th>
+                <th>Mail</th>
+                <th>Fecha Ultima Extracción</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for doninsc in listado_don_inscr %}
+            <tr>
+                <td>{{doninsc.nombre}} {{doninsc.apellido}}</td>
+                <td>{{doninsc.tipoSangre_id}}</td>
+                <td>{{doninsc.fechaNacimiento}}</td>
+                <td>{{doninsc.domicilio}}</td>
+                <td>{{doninsc.ciudad_id}}</td>
+                <td>{{doninsc.mail}}</td>
+                <td>{{doninsc.fechaUltimaExtraccion}}</td>
+
+                <td><a href="detalleDonanteInscripto/{{doninsc.id}}">Ver</a> <a href="editarDonanteInscripto/{{doninsc.id}}">Editar</a> <a href="eliminarDonanteInscripto/{{doninsc.id}}">Eliminar</a></td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>Total: {{cant_don}}</div>
+    <br/>
+    <div>
+        <a href="nuevoDonanteAInscribir">Nuevo</a>
+    </div>
+</section>
+<footer>
+    <h2>
+        <a href="https://www.facebook.com/lis.cpas">Liana Carla Passaro</a>
+    </h2>
+</footer>
+</body>
+</html>

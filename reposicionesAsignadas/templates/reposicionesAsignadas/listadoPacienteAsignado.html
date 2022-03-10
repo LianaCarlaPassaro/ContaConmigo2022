@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/css/estilos.css" rel="stylesheet"/>
+    <title>UTN - Universidad Tecnologica Nacional Facultad Regional Rosario</title>
+</head>
+
+<body>
+<header>
+    <!--<img src="imagenes/images.jfif" alt='Logo ContáConmigo' width="80px" title="Logo ContáConmigo" />
+    <img src="webapp/imagenes/topologo.png" alt='Logo UTN' width="80px" title="Logo UTN" />
+    -->
+    <h2>ContáConmigo</h2>
+    <h5>Página creada para conectar a aquellos que solicitan donantes de sangre con aquellos dispuestos a donar</h5>
+</header>
+<nav>
+    <a href="listadoDonanteReposicion">listadoDonanteReposicion</a>
+    <a href="listadoDonantes">listado Donantes Inscriptos</a>
+    <a href="listadoPacienteAsignado">Aplicar Voluntariamente a Paciente</a>
+</nav>
+<section>
+    <br/>
+    <div>
+        Listado Donantes Asignados a Pacientes:
+    </div>
+    <br/>
+    <br/>
+
+    <div>
+        <table border="2">
+            <thead>
+            <tr>
+                <th>Id Donante</th>
+                <th>Id Paciente</th>
+                <th>Fecha elegida para Reposición</th>
+                <th>Comentarios</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for donasig in listado_don_asignados %}
+            <tr>
+                <td>{{donasig.idDonante_id}}</td>
+                <td>{{donasig.idDonanteReposicion_id}}</td>
+                <td>{{donasig.fechaReposicionElegida}}</td>
+                <td>{{donasig.comentario}}</td>
+
+                <td><a href="detalleDonanteAsignado/{{donasig.id}}">Ver</a> <a href="editarDonanteAsignado/{{donasig.id}}">Editar</a></td>
+               <!-- <a href="eliminarDonanteInscripto/{{donasig.id}}">Eliminar</a></td>-->
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>Total: {{cant_don_asig}}</div>
+    <br/>
+    <div>
+        <a href="nuevoDonanteAsignar">Nueva Asignación de Paciente</a>
+    </div>
+</section>
+<footer>
+    <h2>
+        <a href="https://www.facebook.com/lis.cpas">Liana Carla Passaro</a>
+    </h2>
+</footer>
+</body>
+</html>

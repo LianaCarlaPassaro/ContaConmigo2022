@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/css/estilos.css" rel="stylesheet"/>
+    <title>Ingreso Información de Reposición para Donantes</title>
+</head>
+
+<body>
+<header>
+    <!--<img src="imagenes/images.jfif" alt='Logo ContáConmigo' width="80px" title="Logo ContáConmigo" />-->
+    <h1>ContáConmigo</h1>
+    <h5>Editar Donante para Reposición</h5>
+</header>
+<nav>
+    <a href="listadoDonanteReposicion">Listado Pacientes</a>
+    <a href="listadoDonantes">Listado de Donantes Inscriptos</a>
+    <a href="listadoPacienteAsignado">Aplicar Voluntariamente a Paciente</a>
+</nav>
+<form method="POST">
+    <section>
+        <h3>Complete la información requerida para editar la reposición vinculada a un Paciente específico:</h3>
+        <br/>
+        <table>
+            {{formaDonanteReposicionAsignada}}
+        </table>
+        <button type="submit">Guardar</button>
+        <button type="reset">Limpiar</button>
+        <br/>
+        <br/>
+        <br/>
+        <a href="{% url 'listadoPacientesAsignado' %}">Volver</a>
+        {% csrf_token %}
+    </section>
+</form>
+
+<footer>
+    <h2>
+        <a href="https://www.facebook.com/lis.cpas">Liana Carla Passaro</a>
+    </h2>
+</footer>
+
+</body>
+
+</html>

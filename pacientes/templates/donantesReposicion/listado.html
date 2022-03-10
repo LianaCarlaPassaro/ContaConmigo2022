@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="/css/estilos.css" rel="stylesheet"/>
+    <title>UTN - Universidad Tecnologica Nacional Facultad Regional Rosario</title>
+</head>
+
+<body>
+<header>
+    <!--<img src="imagenes/images.jfif" alt='Logo ContáConmigo' width="80px" title="Logo ContáConmigo" />
+    <img src="webapp/imagenes/topologo.png" alt='Logo UTN' width="80px" title="Logo UTN" />
+    -->
+    <h2>ContáConmigo</h2>
+    <h5>Página creada para conectar a aquellos que solicitan donantes de sangre con aquellos dispuestos a donar</h5>
+</header>
+<nav>
+    <a href="listadoDonanteReposicion">Listado Pacientes</a>
+    <a href="listadoDonantes">Listado de Donantes Inscriptos</a>
+    <a href="listadoPacienteAsignado">Aplicar Voluntariamente a Paciente</a>
+</nav>
+<section>
+    <br/>
+    <div>
+        Listado de Pacientes que Requieren Reposición:
+    </div>
+    <br/>
+    <br/>
+
+    <div>
+        <table border="2">
+            <thead>
+            <tr>
+                <th>Nombre y Apellido</th>
+                <th>Documento</th>
+                <th>Tipo Sangre</th>
+                <th>Cant. Donantes Req</th>
+                <th>Fecha Límite</th>
+                <th>Institución</th>
+                <th>Ciudad</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for donreq in listado_don_req %}
+            <tr>
+                <td>{{donreq.nombre}} {{donreq.apellido}}</td>
+                <td>{{donreq.tipoDocumento}}{{donreq.dni}}</td>
+                <td>{{donreq.tipoSangre_id}}</td>
+                <td>{{donreq.cantidadDonantes}}</td>
+                <td>{{donreq.fechaLimite}}</td>
+                <td>{{donreq.institucion_id}}</td>
+                <td>{{donreq.ciudad_id}}</td>
+                <td><a href="detalleDonanteReposicion/{{donreq.id}}">Ver</a> <a
+                        href="editarDonanteReposicion/{{donreq.id}}">Editar</a> <a
+                        href="eliminarDonanteReposicion/{{donreq.id}}">Eliminar</a></td>
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>Total: {{cant_don}}</div>
+    <br/>
+    <div>
+        <a href="nuevoDonanteReposicion">Nuevo</a>
+    </div>
+</section>
+<footer>
+    <h2>
+        <a href="https://www.facebook.com/lis.cpas">Liana Carla Passaro</a>
+    </h2>
+</footer>
+</body>
+</html>
