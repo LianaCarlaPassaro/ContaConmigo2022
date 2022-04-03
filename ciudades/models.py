@@ -9,5 +9,9 @@ class Ciudad(models.Model):
     codigoPostal = models.IntegerField()
     idProvincia = models.ForeignKey(Provincia, on_delete=models.SET_NULL, null=True)
 
+    class Meta:
+        managed = True
+        db_table = 'ciudad'
+
     def __str__(self):
-        return f'Ciudad: {self.nombreCiudad} Provincia: {self.idProvincia}'
+        return f'{self.nombreCiudad} - {self.idProvincia}'

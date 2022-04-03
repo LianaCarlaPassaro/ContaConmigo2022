@@ -14,4 +14,4 @@ class ReposicionesAsignadas(models.Model):
     comentario = models.TextField(max_length=1024)
 
     def __str__(self):
-        return f'id {self.idDonanteReposicion}'
+        return f'Paciente{self.idPaciente.nombre} id {self.idDonanteReposicion}'

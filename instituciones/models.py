@@ -10,6 +10,5 @@ class Institucion(models.Model):
     telefono = models.CharField(max_length=255)
     idCiudad = models.ForeignKey(Ciudad, on_delete=models.SET_NULL, null=True)
 
-
     def __str__(self):
-        return f'Institución: {self.nombreInstitucion} Dirección: {self.direccion} Ciudad: {self.idCiudad}'
+        return f'{self.nombreInstitucion} - {self.idCiudad}'

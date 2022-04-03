@@ -16,32 +16,38 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pacientes.views import detalleDonanteReposicion, nuevoDonanteReposicion, editarDonanteReposicion, \
-    eliminarDonanteReposicion, listadoDonanteReposicion
+from pacientes.views import detalleDonanteReposicion, nuevoPaciente, editarDonanteReposicion, \
+    eliminarDonanteReposicion, listadoPaciente, nuevoPaciente
 from donantes.views import listadoDonantes, detalleDonanteInscripto, editarDonanteInscripto, nuevoDonanteAInscribir, \
     eliminarDonanteInscripto
-from reposicionesAsignadas.views import listadoPacienteAsignado, nuevoDonanteAsignar, detalleDonanteAsignado, \
-    editarDonanteAsignado, eliminarDonanteAsignado
+from reposicionesAsignadas.views import nuevoDonanteAsignar, detalleDonanteAsignado, \
+    editarDonanteAsignado, eliminarDonanteAsignado, listadoDonantesAplicados, listadoPacientesAplicados, \
+    aplicarNuevaReposicion
 from webapp.views import bienvenido
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('bienvenido', bienvenido()),
     path('', bienvenido, name='inicio'),
+
+    path('listadoPaciente', listadoPaciente,  name='listadoPaciente'),
+    path('nuevoPaciente', nuevoPaciente),
     path('detalleDonanteReposicion/<int:id>', detalleDonanteReposicion),
-    path('nuevoDonanteReposicion', nuevoDonanteReposicion),
     path('editarDonanteReposicion/<int:id>', editarDonanteReposicion),
     path('eliminarDonanteReposicion/<int:id>', eliminarDonanteReposicion),
-    path('listadoDonanteReposicion', listadoDonanteReposicion,  name='listadoDonantesReposicion'),
+    #path('listadoDonantesAplicados/<int:id>', listadoDonantesAplicados),
+    path('listadoDonantesAplicados/<int:id><str:nombre><str:apellido>', listadoDonantesAplicados),
+    path('aplicarNuevaReposicion/<int:id>', aplicarNuevaReposicion),
+    path('listadoDonantesAplicados/nuevoDonanteAsignar/<int:id>', nuevoDonanteAsignar),
+    path('listadoPacientesAplicados', listadoPacientesAplicados),
+    path('detalleDonanteAsignado/<int:id>', detalleDonanteAsignado),
+    path('editarDonanteAsignado/<int:id>', editarDonanteAsignado),
+    path('eliminarDonanteAsignado/<int:id>', eliminarDonanteAsignado),
+
     path('listadoDonantes', listadoDonantes, name='listadoDonantes'),
     path('detalleDonanteInscripto/<int:id>', detalleDonanteInscripto),
     path('editarDonanteInscripto/<int:id>', editarDonanteInscripto),
     path('eliminarDonanteInscripto/<int:id>', eliminarDonanteInscripto),
     path('nuevoDonanteAInscribir', nuevoDonanteAInscribir),
-    path('listadoPacienteAsignado',listadoPacienteAsignado, name='listadoPacientesAsignado'),
-    path('nuevoDonanteAsignar', nuevoDonanteAsignar),
-    path('detalleDonanteAsignado/<int:id>', detalleDonanteAsignado),
-    path('editarDonanteAsignado/<int:id>', editarDonanteAsignado),
-    path('eliminarDonanteAsignado/<int:id>', eliminarDonanteAsignado),
-
 
 ]

@@ -6,4 +6,6 @@ class GrupoFactor(models.Model):
     gruposFactorDescripcion = models.CharField(max_length=255)
 
     def __str__(self):
-        return f'Grupo/Factor {self.gruposFactorDescripcion}'
+        return f'Grupo/Factor: {self.gruposFactorDescripcion}'
+
+

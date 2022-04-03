@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
-
-
-{% include 'base.html' %}
-
-{% block content %}
 <style type="text/css">
+
    caption{
        color:#FA6780;
        font-family: Gotham, sans-serif;
@@ -13,7 +9,7 @@
        line-height: 70px;
    }
 
-   #submit{
+   .button{
         font-family: Gotham, sans-serif;
         font-size: 14px;
         /*color: #FA6780;*/
@@ -44,28 +40,36 @@
    }
 </style>
 
+{% include 'base.html' %}
+
+{% block content %}
+
 <body>
 <div id="content" , name="content" , class="main">
-<form method="POST">
-    <section>
-        <table>
-            <caption>Edite la información del Donante:</caption>
-            {{formaDonanteInscripto}}
-        </table>
-        <br/>
-        <button class="submit" type="submit">Guardar</button>
-        <button type="reset">Limpiar</button>
-        <br/>
-        <br/>
-        <br/>
-        <a id="volver" href="{% url 'listadoDonantes' %}">Volver</a>
-        {% csrf_token %}
-    </section>
-</form>
+    <form method="POST">
+        <section>
+            <table>
+                 <caption>Complete la información del nuevo Paciente:</caption>
+                {{formaDonanteReposicion}}
+            </table>
+            <br/>
+            <button type="submit" class="button">Guardar</button>
+            <button type="reset" class="button">Limpiar</button>
+            <br/>
+
+            {% csrf_token %}
+        </section>
+    </form>
+    <br/>
+    <div>
+<i class="bi bi-arrow-left-short"></i>
+        </div>
+    <a id="volver" href="{% url 'listadoPaciente' %}">Volver</a>
 
 </div>
 </body>
 {% endblock content %}
 
 {% include 'footer.html' %}
+
 </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+   table{
+       width: 100%
+   }
+   table, th, td{
+       border: 1px solid #000;
+       border-collapse: collapse;
+       padding: 5px;
+       font-family: Gotham, sans-serif;
+   }
+   td{
+      text-transform: capitalize;
+   }
+   caption{
+       color:#FA6780;
+       font-family: Gotham, sans-serif;
+       font-size: 24px;
+       line-height: 70px;
+   }
+   th{
+        color: #f1faee;
+        background-color: #FA6780;
+   }
+   /*renglones pares*/
+   tr:nth-child(even){
+        background-color: #FFF0F0;
+    }
+
+   /*renglones impares*/
+   tr:nth-child(odd){
+        background-color: #fff;
+   }
+   .botones{
+        font-family: Gotham, sans-serif;
+        font-size: 14px;
+        color: #000;
+   }
+  #boton_nuevo{
+    font-family: Gotham, sans-serif;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+  #total-registros{
+    font-family: Gotham, sans-serif;
+    font-size: 14px;
+    text-align: right;
+    font-weight: bold;
+    color: #FA6780;
+}
+</style>
+
+<body>
+<div id="content" , name="content" , class="main">
+    <section>
+        <div>
+            <table>
+                <caption>Listado de Pacientes que Requieren Reposición de Sangre:</caption>
+                <thead>
+                    <tr>
+                        <th>Nombre y Apellido</th>
+                        <th>Institución</th>
+                        <th>Fecha Límite</th>
+                        <th>Cant. Donantes</th>
+                        <th>Mail</th>
+                        <th>Comentarios</th>
+                        <th>Tipo de Sangre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for donreq in listado_don_req %}
+                <tr>
+                    <td>{{donreq.nombre}} {{donreq.apellido}}</td>
+                    <td>{{donreq.institucion.nombreInstitucion}} {{donreq.institucion.idCiudad}}</td>
+                    <td>{{donreq.fechaLimite}}</td>
+                    <td>{{donreq.cantidadDonantes}}</td>
+                    <td>{{donreq.mail}}</td>
+                    <td>{{donreq.comentario}}</td>
+                    <td>{{donreq.tipoSangre.gruposFactorDescripcion}}</td>
+
+
+                    <td><a class="botones" href="detalleDonanteReposicion/{{donreq.id}}">Ver</a>
+                        <a class="botones" href="editarDonanteReposicion/{{donreq.id}}">Editar</a>
+                        <a class="botones" href="eliminarDonanteReposicion/{{donreq.id}}">Eliminar</a>
+                        <!--<a class="botones" href="aplicarPaciente/{{donreq.id}}">Aplicar</a>-->
+                        <a class="botones" href="aplicarNuevaReposicion/{{donreq.id}}">Aplicar</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br/>
+        <div id="total-registros">Total Registros: {{cant_don}}</div>
+        <br/>
+        <div id="boton_nuevo"><a href="nuevoPaciente">+ Nuevo</a>
+
+        </div>
+    </section>
+</div>
+</body>
+{% endblock content %}
+
+{% include 'footer.html' %}
+</html>

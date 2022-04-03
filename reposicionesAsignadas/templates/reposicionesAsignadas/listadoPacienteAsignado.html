@@ -1,72 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+{% include 'base.html' %}
 
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="/css/estilos.css" rel="stylesheet"/>
-    <title>UTN - Universidad Tecnologica Nacional Facultad Regional Rosario</title>
-</head>
+{% block content %}
+<style type="text/css">
+   table{
+       width: 100%
+   }
+   table, th, td{
+       border: 1px solid #000;
+       border-collapse: collapse;
+       padding: 5px;
+       font-family: Gotham, sans-serif;
+   }
+   td{
+      text-transform: capitalize;
+   }
+   caption{
+       color:#FA6780;
+       font-family: Gotham, sans-serif;
+       font-size: 24px;
+       line-height: 70px;
+   }
+   th{
+        color: #f1faee;
+        background-color: #FA6780;
+   }
+   /*renglones pares*/
+   tr:nth-child(even){
+        background-color: #FFF0F0;
+    }
+
+   /*renglones impares*/
+   tr:nth-child(odd){
+        background-color: #fff;
+   }
+
+  #boton_nuevo{
+    font-family: Gotham, sans-serif;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+    }
+          #volver{
+        font-family: Gotham, sans-serif;
+        font-size: 14px;
+        color: #000;
+        font-weight: bold;
+   }
+  #total-registros{
+    font-family: Gotham, sans-serif;
+    font-size: 14px;
+    text-align: right;
+    font-weight: bold;
+    color: #FA6780;
+}
+
+
+</style>
+
 
 <body>
-<header>
-    <!--<img src="imagenes/images.jfif" alt='Logo ContáConmigo' width="80px" title="Logo ContáConmigo" />
-    <img src="webapp/imagenes/topologo.png" alt='Logo UTN' width="80px" title="Logo UTN" />
-    -->
-    <h2>ContáConmigo</h2>
-    <h5>Página creada para conectar a aquellos que solicitan donantes de sangre con aquellos dispuestos a donar</h5>
-</header>
-<nav>
-    <a href="listadoDonanteReposicion">listadoDonanteReposicion</a>
-    <a href="listadoDonantes">listado Donantes Inscriptos</a>
-    <a href="listadoPacienteAsignado">Aplicar Voluntariamente a Paciente</a>
-</nav>
-<section>
-    <br/>
-    <div>
-        Listado Donantes Asignados a Pacientes:
-    </div>
-    <br/>
-    <br/>
-
-    <div>
+<div id="content" , name="content" , class="main">
+    <section>
         <table border="2">
+            <!--<caption> Listado Donantes Asignados a Paciente "{{nombre}} {{apellido}}" </caption>-->
+            <caption> Listado Donantes Asignados por Paciente</caption>
             <thead>
             <tr>
-                <th>Id Donante</th>
-                <th>Id Paciente</th>
+                <th>Nombre Paciente</th>
+                <th>Nombre Donante</th>
+                <th>Fecha Límite</th>
                 <th>Fecha elegida para Reposición</th>
                 <th>Comentarios</th>
                 <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
-            {% for donasig in listado_don_asignados %}
-            <tr>
-                <td>{{donasig.idDonante_id}}</td>
-                <td>{{donasig.idDonanteReposicion_id}}</td>
-                <td>{{donasig.fechaReposicionElegida}}</td>
-                <td>{{donasig.comentario}}</td>
 
-                <td><a href="detalleDonanteAsignado/{{donasig.id}}">Ver</a> <a href="editarDonanteAsignado/{{donasig.id}}">Editar</a> <a href="eliminarDonanteAsignado/{{donasig.id}}">Eliminar</a> </td>
-               <!-- </td>-->
+                {% if cant_don_asig == 0 %}
 
-            </tr>
-            {% endfor %}
+                    <tr>
+                        <td align="center">No existen registros</td>
+                    </tr>
+                {% else %}
+                    {% for donasig in listado_don_asignados %}
+                    <tr>
+                        <td>{{donasig.idPaciente.nombre}} {{donasig.idPaciente.apellido}}</td>
+                        <td>{{donasig.idDonante.nombre}} {{donasig.idDonante.apellido}}</td>
+                        <td>{{donasig.idPaciente.fechaLimite}}</td>
+                        <td>{{donasig.fechaReposicionElegida}}</td>
+                        <td>{{donasig.comentario}}</td>
+
+                        <td>
+                            <a href="detalleDonanteAsignado/{{donasig.id}}">Ver</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
             </tbody>
         </table>
-    </div>
-    <div>Total: {{cant_don_asig}}</div>
-    <br/>
-    <div>
-        <a href="nuevoDonanteAsignar">Nueva Asignación de Paciente</a>
-    </div>
-</section>
-<footer>
-    <h2>
-        <a href="https://www.facebook.com/lis.cpas">Liana Carla Passaro</a>
-    </h2>
-</footer>
+
+        <div id="total-registros">Total Registros: {{cant_don_asig}}</div>
+        <br/>
+    </section>
+</div>
 </body>
+{% endblock content %}
+
+{% include 'footer.html' %}
 </html>

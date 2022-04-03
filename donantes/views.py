@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
-from donantes.forms import DonanteInscriptoForm
+from donantes.forms import DonanteInscriptoForm, EditarDonanteForm
 from donantes.models import Donantes
 
 
@@ -16,13 +16,13 @@ def detalleDonanteInscripto(request, id):
 def editarDonanteInscripto(request, id):
     donanteInscripto = get_object_or_404(Donantes, pk=id)
     if request.method == 'POST':
-        formaDonanteInscripto = DonanteInscriptoForm(request.POST, instance=donanteInscripto)
+        formaDonanteInscripto = EditarDonanteForm(request.POST, instance=donanteInscripto)
         if formaDonanteInscripto.is_valid():
             formaDonanteInscripto.save()
             return redirect('listadoDonantes')
     else:
 
-        formaDonanteInscripto = DonanteInscriptoForm(instance=donanteInscripto)
+        formaDonanteInscripto = EditarDonanteForm(instance=donanteInscripto)
 
     return render(request, 'donantes/editar.html', {'formaDonanteInscripto': formaDonanteInscripto})
 

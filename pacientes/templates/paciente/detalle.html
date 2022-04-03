@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{% include 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+    th{
+       text-align: left;
+       border: 1px solid #000;
+       border-collapse: collapse;
+       padding: 5px;
+       font-family: Gotham, sans-serif;
+       }
+
+    td{
+        text-transform: uppercase;
+       }
+   table, td{
+       border: 1px solid #000;
+       border-collapse: collapse;
+       padding: 5px;
+       font-family: Gotham, sans-serif;
+      text-align: center;
+
+   }
+   /*renglones pares*/
+   tr:nth-child(even){
+        background-color: #FFF0F0;
+    }
+
+   /*renglones impares*/
+   tr:nth-child(odd){
+        background-color: #fff;
+   }
+   caption{
+       color:#FA6780;
+       font-family: Gotham, sans-serif;
+       font-size: 24px;
+       line-height: 70px;
+       text-align: center;
+        width: 100%
+   }
+
+</style>
+<body>
+<div id="content" , name="content" , class="main">
+    <section>
+
+            <table>
+                <caption>Información del Paciente:</caption>
+                <tr>
+                    <th>Nombre y Apellido:</th>
+                    <td>{{detalle_don_rep.nombre}} {{detalle_don_rep.apellido}}</td>
+                </tr>
+                <tr>
+                    <th>Documento:</th>
+                    <td>{{detalle_don_rep.tipoDNI}} {{detalle_don_rep.dni}}</td>
+                </tr>
+                <tr>
+                    <th>Fecha de Nacimiento:</th>
+                    <td>{{detalle_don_rep.fechaNacimiento}}</td>
+                </tr>
+                <tr>
+                    <th>Teléfono:</th>
+                    <td>{{detalle_don_rep.telefono}}</td>
+                </tr>
+                <tr>
+                    <th>Tipo/Factor Sanguíneo:</th>
+                    <td>{{detalle_don_rep.tipoSangre.gruposFactorDescripcion}}</td>
+                </tr>
+                <tr>
+                    <th>Mail:</th>
+                    <td>{{detalle_don_rep.mail}}</td>
+                </tr>
+                <tr>
+                    <th>Institución:</th>
+                    <td>{{detalle_don_rep.institucion.nombreInstitucion}} {{detalle_don_rep.institucion.idCiudad}}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Límite Reposición:</th>
+                    <td>{{detalle_don_rep.fechaLimite}}</td>
+                </tr>
+                <tr>
+                    <th>Cant. Donantes Requeridos:</th>
+                    <td> {{detalle_don_rep.cantidadDonantes}}</td>
+                </tr>
+                <tr>
+                    <th>Comentarios:</th>
+                    <td>{{detalle_don_rep.comentario}}</td>
+                </tr>
+                <tr>
+                    <th>Ha completado la Cantidad de Donantes Requeridos?</th>
+                    <td>{{detalle_don_rep.completo}}</td>
+            </table>
+
+    </section>
+    <br/>
+    <br/>
+    <a class="botones" href="{% url 'listadoPaciente' %}">Volver</a>
+
+</div>
+</body>
+{% endblock content %}
+
+{% include 'footer.html' %}
+
+</html>

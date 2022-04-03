@@ -1,5 +1,5 @@
 from django.forms import ModelForm, EmailInput, DateInput
-import django.forms.widgets
+import django.forms
 from reposicionesAsignadas.models import ReposicionesAsignadas
 
 
@@ -8,5 +8,7 @@ class DonanteReposicionAsignadaForm(ModelForm):
         model = ReposicionesAsignadas
         fields = '__all__'
         widgets = {
-            'fechaReposicionElegida': DateInput(format='%d/%m/%Y', attrs={'type': 'date'}),
+            'fechaReposicionElegida': DateInput(attrs={'type':'date', 'data-date-format': 'dd-mm-yyyy', 'data-provide': 'datepicker'}, format="%d/%m/%Y"),
+                #DateInput(format='%d/%m/%Y', attrs={'type': 'date'}),
         }
+

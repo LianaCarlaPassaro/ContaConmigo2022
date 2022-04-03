@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 
-
 {% include 'base.html' %}
 
 {% block content %}
@@ -13,7 +12,7 @@
        line-height: 70px;
    }
 
-   #submit{
+   .button{
         font-family: Gotham, sans-serif;
         font-size: 14px;
         /*color: #FA6780;*/
@@ -46,26 +45,28 @@
 
 <body>
 <div id="content" , name="content" , class="main">
-<form method="POST">
-    <section>
-        <table>
-            <caption>Edite la información del Donante:</caption>
-            {{formaDonanteInscripto}}
-        </table>
-        <br/>
-        <button class="submit" type="submit">Guardar</button>
-        <button type="reset">Limpiar</button>
-        <br/>
-        <br/>
-        <br/>
-        <a id="volver" href="{% url 'listadoDonantes' %}">Volver</a>
-        {% csrf_token %}
-    </section>
-</form>
+        <form method="POST">
+            <section>
+                <br />
+                <table>
+                <caption>Edite la información del Paciente:</caption>
+                {{formaDonanteReposicion}}
+                </table>
+                <br />
+                <button type="submit">Guardar</button>
+                <button type="reset">Limpiar</button>
+                <br/>
+                <br/>
+                <br/>
+                    <a id="volver" href="{% url 'listadoPaciente' %}">Volver</a>
+                {% csrf_token %}
+            </section>
+        </form>
 
 </div>
 </body>
 {% endblock content %}
 
 {% include 'footer.html' %}
+
 </html>

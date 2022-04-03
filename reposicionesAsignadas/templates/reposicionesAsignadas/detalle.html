@@ -1,42 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
+{% include 'base.html' %}
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/estilos.css" rel="stylesheet" />
-    <title>Detalle Donantes para Reposición</title>
-</head>
+{% block content %}
+<style type="text/css">
+    th{
+       text-align: left;
+       border: 1px solid #000;
+       border-collapse: collapse;
+       padding: 5px;
+       font-family: Gotham, sans-serif;
+       }
 
+    td{
+        text-transform: uppercase;
+       }
+
+
+   table, td{
+
+       border: 1px solid #000;
+       border-collapse: collapse;
+       padding: 5px;
+       font-family: Gotham, sans-serif;
+      text-align: center;
+
+   }
+   /*renglones pares*/
+   tr:nth-child(even){
+        background-color: #FFF0F0;
+    }
+
+   /*renglones impares*/
+   tr:nth-child(odd){
+        background-color: #fff;
+   }
+   caption{
+       color:#FA6780;
+       font-family: Gotham, sans-serif;
+       font-size: 21px;
+       line-height: 70px;
+       text-align: center;
+        width: 90%;
+   }
+
+</style>
 <body>
-    <header>
-        <!--<img src="imagenes/images.jfif" alt='Logo ContáConmigo' width="80px" title="Logo ContáConmigo" />-->
-        <h1>ContáConmigo</h1>
-    </header>
-<nav>
-    <a href="listadoDonanteReposicion">Listado Pacientes</a>
-    <a href="listadoDonantes">Listado de Donantes Inscriptos</a>
-    <a href="listadoPacienteAsignado">Aplicar Voluntariamente a Paciente</a>
-</nav>
+<div id="content" , name="content" , class="main">
     <section>
-        <h3>Detalle de Aplicación a Paciente:</h3>
+
             <table>
-                <div>Donante: {{detalle_don_asignados.idDonante_id}}</div>
-                <div>Paciente: {{detalle_don_asignados.idPaciente_id}}</div>
-                <div>Fecha Reposición Elegida: {{detalle_don_asignados.fechaReposicionElegida}}</div>
-                <div>Comentarios: {{detalle_don_asignados.comentario}}</div>
+                <caption>Detalle de Aplicación a Paciente:</caption>
+                <tr>
+                    <th>Donante</th>
+                    <td>{{detalle_don_asignados.idDonante.nombre}} {{detalle_don_asignados.idDonante.apellido}}</td>
+                </tr>
+                 <tr>
+                    <th>Paciente</th>
+                    <td>{{detalle_don_asignados.idPaciente.nombre}} {{detalle_don_asignados.idPaciente.apellido}}</td>
+                </tr>
+                 <tr>
+                    <th>Fecha Reposición Elegida</th>
+                    <td> {{detalle_don_asignados.fechaReposicionElegida}}</td>
+                </tr>
+                 <tr>
+                    <th>Comentarios</th>
+                    <td> {{detalle_don_asignados.comentario}}</td>
+                </tr>
+
         </table>
     </section>
     <br/>
     <br/>
-    <a href="{% url 'listadoPacientesAsignado' %}">Volver</a>
-    <footer>
-        <h2>
-            <a href="https://www.facebook.com/lis.cpas">Liana Carla Passaro</a>
-        </h2>
-    </footer>
+    <a href="javascript:history.go(-1)">Back</a>
 
+</div>
 </body>
+{% endblock content %}
 
+{% include 'footer.html' %}
 </html>

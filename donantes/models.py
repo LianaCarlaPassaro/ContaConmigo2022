@@ -23,5 +23,4 @@ class Donantes(models.Model):
 
 
     def __str__(self):
-        return f'Donante: Nombre {self.nombre} Apellido: {self.apellido} Ciudad: {self.ciudad} Fecha ultima extracción: {self.fechaUltimaExtraccion} ' \
-               f'Tipo Sangre: {self.tipoSangre} Fecha Nacimiento: {self.fechaNacimiento}'
+        return f'Donante: Nombre {self.nombre} Apellido: {self.apellido}'

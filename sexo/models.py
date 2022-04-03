@@ -6,4 +6,4 @@ class Sexo(models.Model):
     sexo = models.CharField(max_length=255)
 
     def __str__(self):
-        return f'Sexo: {self.sexo}'
+        return f'   {self.sexo}'

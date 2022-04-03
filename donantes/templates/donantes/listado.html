@@ -1,37 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="/css/estilos.css" rel="stylesheet"/>
-    <title>UTN - Universidad Tecnologica Nacional Facultad Regional Rosario</title>
-</head>
+
+{% include 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+   table{
+       width: 100%
+   }
+   table, th, td{
+       border: 1px solid #000;
+       border-collapse: collapse;
+       padding: 5px;
+       font-family: Gotham, sans-serif;
+   }
+   td{
+      text-transform: uppercase;
+   }
+   caption{
+       color:#FA6780;
+       font-family: Gotham, sans-serif;
+       font-size: 24px;
+       line-height: 70px;
+   }
+   th{
+        color: #f1faee;
+        background-color: #FA6780;
+   }
+   /*renglones pares*/
+   tr:nth-child(even){
+        background-color: #FFF0F0;
+    }
+
+   /*renglones impares*/
+   tr:nth-child(odd){
+        background-color: #fff;
+   }
+   .botones{
+        font-family: Gotham, sans-serif;
+        font-size: 14px;
+        color: #000;
+        text-transform: capitalize;
+   }
+  #boton_nuevo{
+    font-family: Gotham, sans-serif;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+  #total-registros{
+    font-family: Gotham, sans-serif;
+    font-size: 14px;
+    text-align: right;
+    font-weight: bold;
+    color: #FA6780;
+}
+
+</style>
 
 <body>
-<header>
-    <!--<img src="imagenes/images.jfif" alt='Logo ContáConmigo' width="80px" title="Logo ContáConmigo" />
-    <img src="webapp/imagenes/topologo.png" alt='Logo UTN' width="80px" title="Logo UTN" />
-    -->
-    <h2>ContáConmigo</h2>
-    <h5>Página creada para conectar a aquellos que solicitan donantes de sangre con aquellos dispuestos a donar</h5>
-</header>
-<nav>
-    <a href="listadoDonanteReposicion">Listado Pacientes</a>
-    <a href="listadoDonantes">Listado de Donantes Inscriptos</a>
-    <a href="listadoPacienteAsignado">Aplicar Voluntariamente a Paciente</a>
-</nav>
-<section>
-    <br/>
-    <div>
-        Listado Donantes Inscriptos:
-    </div>
-    <br/>
-    <br/>
+<div id="content" , name="content" , class="main">
+    <section>
 
-    <div>
         <table border="2">
+            <caption>Listado Donantes Inscriptos:</caption>
             <thead>
             <tr>
                 <th>Nombre y Apellido</th>
@@ -41,7 +74,6 @@
                 <th>Mail</th>
                 <th>Fecha Ultima Extracción</th>
                 <th>Domicilio</th>
-                <th>Ciudad</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -51,29 +83,29 @@
                 <td>{{doninsc.nombre}} {{doninsc.apellido}}</td>
                 <td>{{doninsc.sexo}}</td>
                 <td>{{doninsc.fechaNacimiento}}</td>
-                <td>{{doninsc.tipoSangre_id}}</td>
+                <td>{{doninsc.tipoSangre.gruposFactorDescripcion}}</td>
                 <td>{{doninsc.mail}}</td>
                 <td>{{doninsc.fechaUltimaExtraccion}}</td>
-                <td>{{doninsc.domicilio}}</td>
-                <td>{{doninsc.ciudad_id}}</td>
+                <td>{{doninsc.domicilio}}, {{doninsc.ciudad.nombreCiudad}}, {{doninsc.ciudad.idProvincia.nombreProvincia}}</td>
 
-                <td><a href="detalleDonanteInscripto/{{doninsc.id}}">Ver</a> <a href="editarDonanteInscripto/{{doninsc.id}}">Editar</a> <a href="eliminarDonanteInscripto/{{doninsc.id}}">Eliminar</a></td>
-
+                <td>
+                    <a class="botones"  href="detalleDonanteInscripto/{{doninsc.id}}">Ver</a>
+                    <a class="botones"  href="editarDonanteInscripto/{{doninsc.id}}">Editar</a>
+                    <a class="botones" href="eliminarDonanteInscripto/{{doninsc.id}}">Eliminar</a>
+                </td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
-    </div>
-    <div>Total: {{cant_don}}</div>
-    <br/>
-    <div>
-        <a href="nuevoDonanteAInscribir">Nuevo</a>
-    </div>
-</section>
-<footer>
-    <h2>
-        <a href="https://www.facebook.com/lis.cpas">Liana Carla Passaro</a>
-    </h2>
-</footer>
+        <div id="total-registros">Total Registros: {{cant_don}}</div>
+        <br/>
+        <div id="boton_nuevo">
+            <a href="nuevoDonanteAInscribir">+ Nuevo</a>
+        </div>
+    </section>
+</div>
 </body>
+{% endblock %}
+
+{% include 'footer.html' %}
 </html>

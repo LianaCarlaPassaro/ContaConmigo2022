@@ -1,47 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
+<style type="text/css">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/estilos.css" rel="stylesheet" />
-    <title>Ingreso Información de Reposición para Donantes</title>
-</head>
+   caption{
+       color:#FA6780;
+       font-family: Gotham, sans-serif;
+       font-size: 24px;
+       line-height: 70px;
+   }
+
+   .button{
+        font-family: Gotham, sans-serif;
+        font-size: 14px;
+        /*color: #FA6780;*/
+        font-weight: bold;
+   }
+      #volver{
+        font-family: Gotham, sans-serif;
+        font-size: 14px;
+        color: #000;
+        font-weight: bold;
+   }
+   table{
+       border: 1px solid #434b4d;
+       color: #434b4d;
+       font-family: Gotham, sans-serif;
+       border-radius:20px 0px 10px 10px;
+       /*border-radius:15px;*/
+
+   }
+      renglones pares
+   tr:nth-child(even){
+        background-color: #FFF0F0;
+    }
+
+   /*renglones impares*/
+   tr:nth-child(odd){
+        background-color: #fff;
+   }
+</style>
+
+{% include 'base.html' %}
+
+{% block content %}
 
 <body>
-    <header>
-        <!--<img src="imagenes/images.jfif" alt='Logo ContáConmigo' width="80px" title="Logo ContáConmigo" />-->
-        <h1>ContáConmigo</h1>
-        <h5>Información Donantes</h5>
-    </header>
-    <nav>
-        <a href="listadoDonanteReposicion">listadoDonanteReposicion</a>
-        <a href="listadoDonantes">listado Donantes Inscriptos</a>
-        <a href="listadoPacienteAsignado">Aplicar Voluntariamente a Paciente</a>
-    </nav>
+<div id="content" , name="content" , class="main">
         <form method="POST">
             <section>
-                <h3>Complete la información requerida para Asignar aplicar a la donación voluntaria para un Paciente:</h3>
+
                 <br />
                 <table>
-                {{formaReposicionAsignada}}
+                    <caption>Aplique para donar sangre:</caption>
+                    {{formaReposicionAsignada}}
+                    </table>
+                    <button type="submit">Guardar</button>
+                    <button type="reset">Limpiar</button>
+                    {% csrf_token %}
+                    <br/>
+                    <br/>
                 </table>
-                <button type="submit">Guardar</button>
-                <button type="reset">Limpiar</button>
-                {% csrf_token %}
-                <br/>
-                <br/>
-                <a href="{% url 'listadoPacientesAsignado' %}">Volver</a>
+
+                    <a class="botones"  href="javascript:history.go(-1)">Volver</a>
             </section>
         </form>
-
-        <footer>
-            <h2>
-                <a href="https://www.facebook.com/lis.cpas">Liana Carla Passaro</a>
-            </h2>
-        </footer>
-
+</div>
 </body>
+{% endblock content %}
 
+{% include 'footer.html' %}
 </html>

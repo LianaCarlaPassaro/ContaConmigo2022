@@ -14,7 +14,7 @@ class Pacientes(models.Model):
     dni = models.CharField(max_length=255)
     fechaNacimiento = models.DateField()
     ciudad = models.ForeignKey(Ciudad, on_delete=models.SET_NULL, null=True)
-    institucion = models.ForeignKey(Institucion, on_delete=models.SET_NULL, null=True)
+    institucion = models.ForeignKey(Institucion,  on_delete=models.SET_NULL, null=True)
     fechaLimite = models.DateField()
     cantidadDonantes = models.IntegerField()
     mail = models.CharField(max_length=255)
@@ -23,9 +23,5 @@ class Pacientes(models.Model):
     telefono = models.CharField(max_length=255)
     tipoSangre = models.ForeignKey(GrupoFactor, on_delete=models.SET_NULL, null=True)
 
-
     def __str__(self):
-        return f'Nombre {self.nombre} Apellido {self.apellido} Ciudad: {self.ciudad} TipoSangre: {self.tipoSangre}'
-
-
-
+        return f'Nombre: {self.nombre} Apellido: {self.apellido} '
