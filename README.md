@@ -11,5 +11,7 @@ django-admin version
 cd ContaConmigo2022
 5. run python server
 python manage.py runserver
-6. Install django redux
+6. Install the postgre module
+pip install psycopg2
+8. django redux
 pip install django-registration-redux
