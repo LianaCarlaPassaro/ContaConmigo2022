@@ -11,3 +11,5 @@ django-admin version
 cd ContaConmigo2022
 5. run python server
 python manage.py runserver
+6. Install django redux
+pip install django-registration-redux
