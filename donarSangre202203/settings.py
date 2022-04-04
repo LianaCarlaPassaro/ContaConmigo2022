@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'reposicionesAsignadas',
     'tipoDocumentos',
     'sexo',
-    'registration',
 ]
 
 MIDDLEWARE = [
