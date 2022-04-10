@@ -13,6 +13,7 @@ cd ContaConmigo2022
 python manage.py runserver
 6. Install the postgre module
 pip install psycopg2
+7. Create admin super user: python manage.py createsuperuser
 8. django redux
 pip install django-registration-redux
 9. crispy: pip install django-crispy-forms
